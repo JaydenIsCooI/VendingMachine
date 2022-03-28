@@ -1,4 +1,4 @@
-package com.company;
+package com.gmail.Jaydensterba;
 
 import java.util.Scanner;
 
@@ -7,13 +7,13 @@ public class SnackBar
     CandyMachine CandyMachine = new CandyMachine();
     SodaMachine SodaMachine = new SodaMachine();
     SnackMachine SnackMachine = new SnackMachine();
-    String line = ("------------------------------------------------------------");
+    final String line = ("------------------------------------------------------------");
 
     public void vend()
     {
         Scanner in = new Scanner(System.in);
         System.out.println(line + "\nWelcome to the Snackbar! Type \"exit\" to Leave at any Time!\n");
-        String e = "exit";
+        final String e = "exit";
         boolean exit = false;
         boolean success = false;
         double bal = 0;

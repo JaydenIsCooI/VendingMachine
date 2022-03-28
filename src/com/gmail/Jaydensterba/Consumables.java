@@ -1,6 +1,6 @@
-package com.company;
+package com.gmail.Jaydensterba;
 
-public class Consumables
+public abstract class Consumables
 {
     public String Name;
     public double Price;
