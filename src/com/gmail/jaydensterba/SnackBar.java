@@ -1,4 +1,4 @@
-package com.gmail.Jaydensterba;
+package com.gmail.jaydensterba;
 
 import java.util.Scanner;
 
@@ -12,7 +12,8 @@ public class SnackBar
     public void vend()
     {
         Scanner in = new Scanner(System.in);
-        System.out.println(line + "\nWelcome to the Snackbar! Type \"exit\" to Leave at any Time!\n");
+        System.out.println(line + "\nWelcome to the Snackbar! Type \"exit\" to Leave at any Time!\n" + line);
+
         final String e = "exit";
         boolean exit = false;
         boolean success = false;
@@ -39,11 +40,11 @@ public class SnackBar
                 System.out.println("Please Enter a Valid Number for Your Balance!\n" + line);
             }
         }
-
         while (!exit)
         {
             System.out.println("                Available Vending Machines\n" + line);
             System.out.println("            Candy    ||    Soda    ||    Snack\n" + line);
+
             for (int i = 0; i < 1; i++)
             {
                 System.out.print("Please Enter a Vending Machine:: ");
@@ -61,7 +62,7 @@ public class SnackBar
                         System.out.println("                    Available Candy\n" + line);
                         for (int j = 0; j < CandyMachine.Inventory.length; j++)
                         {
-                            if (CandyMachine.Inventory[j].Quantity != 0)
+                            if (CandyMachine.Inventory[j].Quantity >= 1)
                             {
                                 if (j == CandyMachine.Inventory.length - 1)
                                 {
@@ -77,6 +78,7 @@ public class SnackBar
                             }
                         }
                         System.out.println(line);
+
                         for (int j = 0; j < 1; j++)
                         {
                             boolean check = false;
@@ -91,7 +93,7 @@ public class SnackBar
                             {
                                 if (temp.equalsIgnoreCase(CandyMachine.Inventory[k].getName()))
                                 {
-                                    if (CandyMachine.Inventory[k].getQuantity() > 0)
+                                    if (CandyMachine.Inventory[k].getQuantity() >= 1)
                                     {
                                         if (bal >= CandyMachine.Inventory[k].getPrice())
                                         {
@@ -105,6 +107,7 @@ public class SnackBar
                                         check = true;
                                     } else
                                     {
+                                        check = true;
                                         System.out.println("Sorry! We are currently out of " + CandyMachine.Inventory[k].getName() + "!\n" + line + "\n");
                                     }
                                 }
@@ -137,11 +140,13 @@ public class SnackBar
                             }
                         }
                         System.out.println(line);
+
                         for (int j = 0; j < 1; j++)
                         {
                             boolean check = false;
                             System.out.print("Please Make a Selection: ");
                             String temp = in.nextLine();
+
                             if (temp.equalsIgnoreCase(e))
                             {
                                 return;
@@ -151,7 +156,7 @@ public class SnackBar
                             {
                                 if (temp.equalsIgnoreCase(SodaMachine.Inventory[k].getName()))
                                 {
-                                    if (temp.equalsIgnoreCase(SodaMachine.Inventory[k].getName()))
+                                    if (SodaMachine.Inventory[k].getQuantity() >= 1)
                                     {
                                         if (bal >= SodaMachine.Inventory[k].getPrice())
                                         {
@@ -163,10 +168,11 @@ public class SnackBar
                                             System.out.println("Sorry! You do not have enough Money to Purchase that Item!\n" + line + "\n");
                                         }
                                         check = true;
+                                    } else
+                                    {
+                                        check = true;
+                                        System.out.println("Sorry! We are currently out of " + SodaMachine.Inventory[k].getName() + "!\n" + line + "\n");
                                     }
-                                } else
-                                {
-                                    System.out.println("Sorry! We are currently out of " + SodaMachine.Inventory[k].getName() + "!\n" + line + "\n");
                                 }
                             }
                             if (!check)
@@ -181,7 +187,7 @@ public class SnackBar
                         System.out.println("                    Available Snacks\n" + line);
                         for (int j = 0; j < SnackMachine.Inventory.length; j++)
                         {
-                            if (SnackMachine.Inventory[j].Quantity != 0)
+                            if (SnackMachine.Inventory[j].Quantity >= 1)
                             {
                                 if (j == SnackMachine.Inventory.length - 1)
                                 {
@@ -197,11 +203,13 @@ public class SnackBar
                             }
                         }
                         System.out.println(line);
+
                         for (int j = 0; j < 1; j++)
                         {
                             boolean check = false;
                             System.out.print("Please Make a Selection: ");
                             String temp = in.nextLine();
+
                             if (temp.equalsIgnoreCase(e))
                             {
                                 return;
@@ -211,7 +219,7 @@ public class SnackBar
                             {
                                 if (temp.equalsIgnoreCase(SnackMachine.Inventory[k].getName()))
                                 {
-                                    if (temp.equalsIgnoreCase(SnackMachine.Inventory[k].getName()))
+                                    if (SnackMachine.Inventory[k].getQuantity() >= 1)
                                     {
                                         if (bal >= SnackMachine.Inventory[k].getPrice())
                                         {
@@ -223,10 +231,11 @@ public class SnackBar
                                             System.out.println("Sorry! You do not have enough Money to Purchase that Item!\n" + line + "\n");
                                         }
                                         check = true;
+                                    } else
+                                    {
+                                        check = true;
+                                        System.out.println("Sorry! We are currently out of " + SnackMachine.Inventory[k].getName() + "!\n" + line + "\n");
                                     }
-                                } else
-                                {
-                                    System.out.println("Sorry! We are currently out of " + SnackMachine.Inventory[k].getName() + "!\n" + line + "\n");
                                 }
                             }
                             if (!check)
@@ -260,29 +269,26 @@ public class SnackBar
         {
             SnackMachine.Inventory[i].setQuantity(SnackMachine.Inventory[i].maxQuantity);
         }
-        System.out.println("The Shelves have been Restocked!\n" + line);
+        System.out.println("The Shelves have been Restocked!\n" + line + "\n");
     }
 
     public void displayShelves()
     {
-        System.out.println("                    Available Candy\n" + line);
-        System.out.println(line);
+        System.out.println(line + "\n                    Available Candy\n" + line);
         for (int i = 0; i < CandyMachine.Inventory.length; i++)
         {
             System.out.println("Name: " + CandyMachine.Inventory[i].getName() + "  ||  Price: $" + CandyMachine.Inventory[i].getPrice() + "  ||  Quantity: " + CandyMachine.Inventory[i].getQuantity());
         }
-        System.out.println(line);
-        System.out.println("                    Available Sodas\n" + line);
+        System.out.println(line + "\n                    Available Sodas\n" + line);
         for (int i = 0; i < SodaMachine.Inventory.length; i++)
         {
-            System.out.println("Name: " + SodaMachine.Inventory[i].getName() + "  ||  Price: $" + SodaMachine.Inventory[i].getPrice() + "  ||  Quantity: " + SodaMachine.Inventory[i].getQuantity());
+            System.out.println("Name: " + SodaMachine.Inventory[i].getName() + "  ||  Price: $" + SodaMachine.Inventory[i].getPrice() + "  ||  Quantity: " + SodaMachine.Inventory[i].getQuantity() + "  ||  Temperature (F): " + SodaMachine.Inventory[i].getTemp());
         }
-        System.out.println(line);
-        System.out.println("                    Available Snacks\n + line");
+        System.out.println(line + "\n                    Available Snacks\n" + line);
         for (int i = 0; i < SnackMachine.Inventory.length; i++)
         {
             System.out.println("Name: " + SnackMachine.Inventory[i].getName() + "  ||  Price: $" + SnackMachine.Inventory[i].getPrice() + "  ||  Quantity: " + SnackMachine.Inventory[i].getQuantity());
         }
-        System.out.println(line);
+        System.out.println(line + "\n");
     }
 }

@@ -1,4 +1,4 @@
-package com.gmail.Jaydensterba;
+package com.gmail.jaydensterba;
 
 public class Sodas extends Consumables
 {
